@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estudio Jurídico - Lic. Cesar Adriano</title>
     
-    <!-- Fuentes de Google -->
+    <!-- Fuentes e Iconos -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Iconos vectoriales -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -18,55 +17,47 @@
             --blanco: #ffffff;
         }
 
-        /* Reseteo total para asegurar el ancho completo */
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
+        /* RESET PARA ANCHO COMPLETO */
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
             color: #333;
+            width: 100%;
+            overflow-x: hidden;
             
-            /* ACABADO TIPO MÁRMOL (Gradientes en capas) */
-            background-color: #fdfdfd;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(220, 225, 235, 0.5) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(255, 255, 255, 0.8) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(210, 215, 225, 0.4) 0px, transparent 50%),
-                radial-gradient(at 0% 100%, rgba(255, 255, 255, 0.8) 0px, transparent 50%),
-                linear-gradient(135deg, rgba(180, 180, 180, 0.02) 25%, transparent 25%, transparent 50%, rgba(180, 180, 180, 0.02) 50%, rgba(180, 180, 180, 0.02) 75%, transparent 75%, transparent);
-            background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 40px 40px;
-            background-attachment: fixed;
+            /* EFECTO MÁRMOL VISIBLE */
+            background-color: #e5e5e5; /* Color base para que las vetas resalten */
+            background-image: url('https://www.transparenttextures.com/patterns/white-marble.png');
+            background-attachment: fixed; /* El fondo se queda quieto al bajar */
         }
 
-        /* 1. CABECERA */
+        /* 1. CABECERA Y LOGO */
         .cabecera {
-            background: rgba(255, 255, 255, 0.5); /* Translúcido para ver el mármol */
-            backdrop-filter: blur(5px);
             text-align: center;
-            padding: 60px 20px 30px; 
+            padding: 40px 0 20px; 
             width: 100%;
+            background: rgba(255, 255, 255, 0.3); /* Capa ligera sobre el mármol */
         }
 
         .logo-contenedor {
-            width: 100%;
-            max-width: 300px;
+            width: 280px; /* Ancho del logo */
+            height: 180px; /* Altura máxima para solo mostrar el escudo */
             margin: 0 auto;
-            overflow: hidden; /* Corta excesos si la imagen es muy grande */
+            overflow: hidden; /* Esto "recorta" la imagen automáticamente */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
         }
 
         .logo-contenedor img {
-            width: 100%;
+            width: 100%; /* Ajusta el ancho al contenedor */
             height: auto;
-            display: block;
+            margin-top: -10px; /* Ajusta este valor si necesitas subir o bajar el recorte */
         }
 
         .texto-estudio {
@@ -75,10 +66,10 @@
             color: #555;
             text-transform: uppercase;
             font-weight: 600;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
-        /* 2. PANEL DEL NOMBRE */
+        /* 2. PANEL DEL NOMBRE (100% ANCHO) */
         .panel-nombre {
             background-color: var(--blanco);
             width: 100%;
@@ -86,15 +77,14 @@
             text-align: center;
             border-top: 3px solid var(--dorado);
             border-bottom: 3px solid var(--dorado);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .nombre-abogado {
             font-family: 'Cinzel', serif;
-            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            font-size: clamp(2rem, 5vw, 3.5rem);
             color: var(--azul-oscuro);
             margin-bottom: 15px;
-            letter-spacing: 2px;
         }
 
         .divisor-dorado {
@@ -105,48 +95,29 @@
             margin-bottom: 20px;
         }
 
-        .divisor-dorado span {
-            height: 1px;
-            width: 100px;
-            background-color: var(--dorado);
-        }
-
-        .divisor-dorado i {
-            color: var(--dorado);
-            font-size: 1.8rem;
-        }
+        .divisor-dorado span { height: 1px; width: 80px; background-color: var(--dorado); }
+        .divisor-dorado i { color: var(--dorado); font-size: 1.5rem; }
 
         .especialidades {
-            font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+            font-size: clamp(0.85rem, 2vw, 1.1rem);
             font-weight: 700;
             color: var(--azul-oscuro);
-            letter-spacing: 2px;
-            line-height: 1.8;
+            letter-spacing: 1.5px;
+            line-height: 1.6;
         }
 
         /* 3. SECCIÓN DE AYUDA */
         .seccion-ayuda {
             text-align: center;
-            padding: 80px 20px 50px;
+            padding: 60px 20px;
             max-width: 900px;
             margin: 0 auto;
         }
 
-        .seccion-ayuda h2 {
-            color: var(--dorado);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            font-family: 'Cinzel', serif;
-        }
+        .seccion-ayuda h2 { color: var(--dorado); font-size: 1.6rem; margin-bottom: 15px; }
+        .seccion-ayuda p { font-size: 1.1rem; color: #444; font-weight: 500; }
 
-        .seccion-ayuda p {
-            font-size: 1.1rem;
-            color: #444;
-            line-height: 1.8;
-            font-weight: 500;
-        }
-
-        /* 4. GRID DE SERVICIOS */
+        /* 4. SERVICIOS EN CUADRÍCULA */
         .contenedor-servicios {
             max-width: 1200px;
             margin: 0 auto;
@@ -155,32 +126,23 @@
 
         .grid-servicios {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 25px;
         }
 
         .tarjeta-servicio {
             background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 40px 25px;
+            border-radius: 12px;
+            padding: 35px 20px;
             text-align: center;
             border: 1px solid rgba(176, 147, 90, 0.2);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.06);
-            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
         }
 
-        .tarjeta-servicio:hover {
-            transform: translateY(-10px);
-            background-color: var(--blanco);
-        }
+        .tarjeta-servicio i { font-size: 2.5rem; color: var(--azul-oscuro); margin-bottom: 15px; }
+        .tarjeta-servicio h3 { font-size: 1rem; color: var(--azul-oscuro); margin-bottom: 12px; }
 
-        .tarjeta-servicio i {
-            font-size: 3rem;
-            color: var(--azul-oscuro);
-            margin-bottom: 20px;
-        }
-
-        /* 5. BARRA DE BOTONES CONTACTO */
+        /* 5. BOTONES DE CONTACTO (ABAJO) */
         .barra-botones {
             display: flex;
             flex-wrap: wrap;
@@ -190,51 +152,34 @@
 
         .boton-contacto {
             flex: 1 1 25%;
-            padding: 30px 15px;
+            padding: 25px 10px;
             text-decoration: none;
             color: var(--blanco);
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             border-right: 1px solid rgba(255,255,255,0.05);
-            transition: background 0.3s;
         }
 
-        .boton-contacto:hover {
-            background-color: #1d2d50;
-        }
+        .boton-contacto i { font-size: 2.2rem; }
 
-        /* 6. BARRA VALORES */
+        /* 6. BARRA DE VALORES */
         .barra-valores {
             background-color: #0d1526;
-            padding: 40px 20px;
+            padding: 30px 20px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 40px;
         }
 
-        .valor {
-            color: var(--blanco);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .valor { color: var(--blanco); font-size: 0.9rem; display: flex; align-items: center; gap: 10px; }
+        .valor i { color: var(--dorado); }
 
-        .valor i { color: var(--dorado); font-size: 1.5rem; }
-
-        /* 7. FOOTER */
-        .footer-final {
-            background-color: var(--azul-botones);
-            padding: 40px 20px;
-            text-align: center;
-            color: var(--blanco);
-        }
-
-        @media (max-width: 768px) {
+        /* RESPONSIVO */
+        @media (max-width: 600px) {
             .boton-contacto { flex: 1 1 50%; }
             .valor { flex: 1 1 100%; justify-content: center; }
         }
@@ -244,9 +189,8 @@
 
     <header class="cabecera">
         <div class="logo-contenedor">
-            <!-- RECUERDA: Si usas la imagen completa, se verá pequeña aquí. 
-                 Es mejor recortar solo el escudo en tu galería de fotos. -->
-            <img src="logo.png" alt="AP&U Logo">
+            <!-- Aquí usas tu imagen image_c97970.jpg con nombre logo.png -->
+            <img src="logo.png" alt="Logo Estudio Jurídico">
         </div>
         <div class="texto-estudio">ESTUDIO JURÍDICO</div>
     </header>
@@ -266,24 +210,24 @@
 
     <section class="seccion-ayuda">
         <h2>¿CÓMO PODEMOS AYUDARTE?</h2>
-        <p>Brindamos asesoría y representación legal con profesionalismo, ética y compromiso, buscando siempre la mejor solución para cada caso.</p>
+        <p>Asesoría y representación legal profesional para proteger sus intereses y garantizar justicia en cada trámite.</p>
     </section>
 
     <section class="contenedor-servicios">
         <div class="grid-servicios">
             <div class="tarjeta-servicio">
                 <i class="fa-solid fa-handshake"></i>
-                <h3>JUICIOS CIVILES</h3>
-                <p>Contratos, deudas, arrendamientos y daños.</p>
+                <h3>CIVILES</h3>
+                <p>Contratos, arrendamientos y deudas.</p>
             </div>
             <div class="tarjeta-servicio">
                 <i class="fa-solid fa-chart-line"></i>
-                <h3>JUICIOS MERCANTILES</h3>
-                <p>Cobranza, sociedades y pagarés.</p>
+                <h3>MERCANTILES</h3>
+                <p>Cobranza corporativa y sociedades.</p>
             </div>
             <div class="tarjeta-servicio">
                 <i class="fa-solid fa-users"></i>
-                <h3>JUICIOS FAMILIARES</h3>
+                <h3>FAMILIARES</h3>
                 <p>Divorcios, pensiones y custodias.</p>
             </div>
             <div class="tarjeta-servicio">
@@ -296,37 +240,28 @@
 
     <div class="barra-botones">
         <a href="https://wa.me/526251101156" class="boton-contacto">
-            <i class="fa-brands fa-whatsapp icon-wa" style="font-size: 2.5rem; color: #25D366;"></i>
-            <strong>WHATSAPP</strong>
-            <span class="subtexto-boton">625 110 1156</span>
+            <i class="fa-brands fa-whatsapp" style="color:#25D366;"></i>
+            WHATSAPP
         </a>
         <a href="tel:6251101156" class="boton-contacto">
-            <i class="fa-solid fa-phone" style="font-size: 2.5rem; color: #e5a55d;"></i>
-            <strong>LLAMAR</strong>
-            <span class="subtexto-boton">625 110 1156</span>
+            <i class="fa-solid fa-phone" style="color:#e5a55d;"></i>
+            LLAMAR
         </a>
         <a href="#" class="boton-contacto">
-            <i class="fa-solid fa-location-dot" style="font-size: 2.5rem; color: #ff5a5f;"></i>
-            <strong>UBICACIÓN</strong>
-            <span class="subtexto-boton">Ver en Maps</span>
+            <i class="fa-solid fa-location-dot" style="color:#ff5a5f;"></i>
+            MAPA
         </a>
         <a href="#" class="boton-contacto">
-            <i class="fa-solid fa-address-card" style="font-size: 2.5rem; color: #d1d8e0;"></i>
-            <strong>GUARDAR</strong>
-            <span class="subtexto-boton">Añadir contacto</span>
+            <i class="fa-solid fa-address-card" style="color:#d1d8e0;"></i>
+            CONTACTO
         </a>
     </div>
 
     <div class="barra-valores">
-        <div class="valor"><i class="fa-regular fa-envelope"></i> Atención Confidencial</div>
-        <div class="valor"><i class="fa-regular fa-star"></i> Compromiso Total</div>
-        <div class="valor"><i class="fa-regular fa-user"></i> Asesoría Personal</div>
+        <div class="valor"><i class="fa-regular fa-envelope"></i> Atención Directa</div>
+        <div class="valor"><i class="fa-regular fa-star"></i> Compromiso</div>
+        <div class="valor"><i class="fa-regular fa-user"></i> Ética Profesional</div>
     </div>
-
-    <footer class="footer-final">
-        <p><i class="fa-solid fa-scale-balanced"></i> <strong>AP&U ESTUDIO JURÍDICO</strong></p>
-        <p style="font-style: italic; opacity: 0.7; margin-top: 10px;">Defendemos tus derechos, protegemos tu futuro.</p>
-    </footer>
 
 </body>
 </html>
