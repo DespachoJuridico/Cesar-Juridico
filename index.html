@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estudio Jurídico - Lic. Cesar Adriano</title>
     
+    <!-- Fuentes de Google -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos vectoriales -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* Variables de color */
         :root {
             --azul-oscuro: #1b263b;
             --azul-botones: #14213d;
             --dorado: #b0935a;
+            --fondo-gris: #f8f9fa;
             --blanco: #ffffff;
         }
 
+        /* Reseteo básico para ocupar el 100% de la pantalla */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -24,17 +29,15 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            /* TEXTURA DE MÁRMOL APLICADA AL FONDO */
-            background-image: url('https://www.transparenttextures.com/patterns/white-marble.png'), 
-                              linear-gradient(to bottom, #f8f9fa, #e9ecef);
-            background-attachment: fixed;
+            background-color: var(--fondo-gris);
             color: #333;
             width: 100vw;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Evita que la página se mueva hacia los lados */
         }
 
-        /* 1. CABECERA */
+        /* 1. CABECERA (Logo a pantalla completa) */
         .cabecera {
+            background: linear-gradient(to bottom, #ffffff, #f0f2f5);
             text-align: center;
             padding: 50px 20px 20px; 
             width: 100%;
@@ -42,7 +45,7 @@
 
         .logo-contenedor img {
             width: 100%;
-            max-width: 250px;
+            max-width: 250px; /* El logo no crecerá más de esto en PC, pero se achicará en móviles */
             height: auto;
         }
 
@@ -55,7 +58,7 @@
             margin-top: 15px;
         }
 
-        /* 2. PANEL DEL NOMBRE (Efecto Elevado sobre Mármol) */
+        /* 2. PANEL DEL NOMBRE (Banda completa de lado a lado) */
         .panel-nombre {
             background-color: var(--blanco);
             width: 100%;
@@ -63,13 +66,12 @@
             text-align: center;
             border-top: 2px solid var(--dorado);
             border-bottom: 2px solid var(--dorado);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
         }
 
         .nombre-abogado {
             font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(2rem, 5vw, 3.5rem); /* Texto fluido: crece en PC y se ajusta en móvil */
             color: var(--azul-oscuro);
             margin-bottom: 15px;
         }
@@ -104,46 +106,49 @@
         /* 3. SECCIÓN DE AYUDA */
         .seccion-ayuda {
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px 40px;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto; /* Centra el texto en pantallas gigantes */
         }
 
         .seccion-ayuda h2 {
             color: var(--dorado);
             font-size: 1.5rem;
             margin-bottom: 15px;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
 
         .seccion-ayuda p {
             font-size: 1.05rem;
-            color: #444;
+            color: #555;
             line-height: 1.6;
-            font-weight: 500;
         }
 
-        /* 4. GRID DE SERVICIOS */
+        /* 4. GRID DE SERVICIOS (Adaptable) */
         .contenedor-servicios {
-            max-width: 1200px;
+            max-width: 1200px; /* Límite para que no se vea desproporcionado en monitores muy grandes */
             margin: 0 auto;
             padding: 0 20px 60px;
         }
 
         .grid-servicios {
             display: grid;
+            /* Esta línea hace la magia: 1 columna en celular, 2 en tablet, 4 en PC automáticamente */
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
             gap: 25px;
         }
 
         .tarjeta-servicio {
-            background-color: rgba(255, 255, 255, 0.9); /* Ligeramente transparente para notar el mármol detrás */
+            background-color: var(--blanco);
             border-radius: 12px;
             padding: 30px 20px;
             text-align: center;
-            border: 1px solid rgba(176, 147, 90, 0.2);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-            backdrop-filter: blur(5px); /* Efecto moderno de desenfoque */
+            border: 1px solid #eaeaea;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease;
+        }
+
+        .tarjeta-servicio:hover {
+            transform: translateY(-5px); /* Efecto de elevación al pasar el mouse en PC */
         }
 
         .tarjeta-servicio i {
@@ -161,20 +166,20 @@
 
         .tarjeta-servicio p {
             font-size: 0.9rem;
-            color: #555;
+            color: #666;
             line-height: 1.5;
         }
 
-        /* 5. BARRA DE BOTONES */
+        /* 5. BARRA DE BOTONES (100% de ancho) */
         .barra-botones {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Permite que los botones se acomoden en móviles */
             width: 100%;
             background-color: var(--azul-botones);
         }
 
         .boton-contacto {
-            flex: 1 1 25%;
+            flex: 1 1 25%; /* Intenta ocupar el 25% (4 botones). Si no cabe, baja. */
             padding: 25px 10px;
             text-decoration: none;
             color: var(--blanco);
@@ -186,14 +191,22 @@
             align-items: center;
             gap: 10px;
             border-right: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .boton-contacto i { font-size: 2.2rem; }
         .icon-wa { color: #25D366; }
         .icon-llam { color: #e5a55d; }
         .icon-map { color: #ff5a5f; }
+        .icon-user { color: #d1d8e0; }
 
-        /* 6. BARRA DE VALORES */
+        .subtexto-boton {
+            font-size: 0.7rem;
+            color: #aaa;
+            font-weight: 400;
+        }
+
+        /* 6. BARRA DE VALORES INFERIOR */
         .barra-valores {
             background-color: #0d1526;
             padding: 25px 20px;
@@ -211,33 +224,41 @@
             gap: 10px;
         }
 
-        .valor i { font-size: 1.4rem; color: #b0935a; }
+        .valor i { font-size: 1.4rem; color: #888; }
 
-        /* 7. FOOTER */
+        /* 7. FOOTER FINAL */
         .footer-final {
             background-color: var(--azul-botones);
             padding: 30px 20px;
             text-align: center;
             color: var(--blanco);
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
+        .footer-final p { font-size: 1rem; margin-bottom: 5px; }
         .footer-final i { color: var(--dorado); margin-right: 5px; }
+        .footer-final .subtitulo { font-size: 0.85rem; font-style: italic; color: #aaa; }
 
+        /* REGLAS PARA TELÉFONOS MÓVILES */
         @media (max-width: 600px) {
-            .boton-contacto { flex: 1 1 50%; }
-            .valor { flex: 1 1 100%; justify-content: center; }
+            .boton-contacto { flex: 1 1 50%; /* En móviles, los botones se ponen en 2 filas de 2 */ }
+            .divisor-dorado span { width: 40px; }
+            .valor { flex: 1 1 100%; justify-content: center; /* Valores apilados en móvil */ }
         }
     </style>
 </head>
 <body>
 
+    <!-- 1. Cabecera -->
     <header class="cabecera">
         <div class="logo-contenedor">
+            <!-- RECUERDA: Recorta tu imagen original para que solo se vea el escudo y guárdala como logo.png -->
             <img src="logo.png" alt="Logo AP&U">
             <div class="texto-estudio">ESTUDIO JURÍDICO</div>
         </div>
     </header>
 
+    <!-- 2. Panel del Nombre -->
     <section class="panel-nombre">
         <h1 class="nombre-abogado">LIC. CESAR ADRIANO</h1>
         <div class="divisor-dorado">
@@ -251,64 +272,73 @@
         </div>
     </section>
 
+    <!-- 3. Texto de ayuda -->
     <section class="seccion-ayuda">
         <h2>¿CÓMO PODEMOS AYUDARTE?</h2>
         <p>Brindamos asesoría y representación legal con profesionalismo, ética y compromiso, buscando siempre la mejor solución para cada caso.</p>
     </section>
 
+    <!-- 4. Cuadrícula de Servicios -->
     <section class="contenedor-servicios">
         <div class="grid-servicios">
             <div class="tarjeta-servicio">
                 <i class="fa-solid fa-handshake"></i>
                 <h3>JUICIOS CIVILES</h3>
-                <p>Atendemos conflictos entre particulares relacionados con contratos, pago de deudas y arrendamientos.</p>
+                <p>Atendemos conflictos entre particulares relacionados con contratos, pago de deudas, arrendamientos, daños y perjuicios.</p>
             </div>
             <div class="tarjeta-servicio">
                 <i class="fa-solid fa-chart-line"></i>
                 <h3>JUICIOS MERCANTILES</h3>
-                <p>Soluciones legales para empresas en materia de contratos, pagarés, cobranza y sociedades.</p>
+                <p>Soluciones legales para empresas y negocios en materia de contratos, pagarés, cobranza, sociedades y quiebras.</p>
             </div>
             <div class="tarjeta-servicio">
                 <i class="fa-solid fa-users"></i>
                 <h3>JUICIOS FAMILIARES</h3>
-                <p>Asesoría en asuntos de divorcios, pensiones alimenticias, custodia y sucesiones.</p>
+                <p>Asesoría y representación en asuntos de divorcios, pensiones alimenticias, custodia, convivencia y sucesiones.</p>
             </div>
             <div class="tarjeta-servicio">
                 <i class="fa-solid fa-building-columns"></i>
                 <h3>AMPARO</h3>
-                <p>Protegemos tus derechos mediante el juicio de amparo contra actos de autoridad.</p>
+                <p>Protegemos tus derechos mediante el juicio de amparo contra actos de autoridad que vulneren las garantías.</p>
             </div>
         </div>
     </section>
 
+    <!-- 5. Botones de acción -->
     <div class="barra-botones">
         <a href="https://wa.me/526251101156" class="boton-contacto">
             <i class="fa-brands fa-whatsapp icon-wa"></i>
             WHATSAPP
+            <span class="subtexto-boton">625 110 1156</span>
         </a>
         <a href="tel:6251101156" class="boton-contacto">
             <i class="fa-solid fa-phone icon-llam"></i>
             LLAMAR
+            <span class="subtexto-boton">625 110 1156</span>
         </a>
         <a href="#" class="boton-contacto">
             <i class="fa-solid fa-location-dot icon-map"></i>
             UBICACIÓN
+            <span class="subtexto-boton">Ver en Maps</span>
         </a>
         <a href="#" class="boton-contacto">
             <i class="fa-solid fa-address-card icon-user"></i>
-            GUARDAR
+            GUARDAR CONTACTO
+            <span class="subtexto-boton">Agregar a agenda</span>
         </a>
     </div>
 
+    <!-- 6. Valores -->
     <div class="barra-valores">
-        <div class="valor"><i class="fa-regular fa-envelope"></i> Atención Profesional</div>
-        <div class="valor"><i class="fa-regular fa-star"></i> Compromiso</div>
-        <div class="valor"><i class="fa-regular fa-user"></i> Asesoría Personal</div>
+        <div class="valor"><i class="fa-regular fa-envelope"></i> <span>Atención profesional y confidencial</span></div>
+        <div class="valor"><i class="fa-regular fa-square-check"></i> <span>Compromiso y resultados efectivos</span></div>
+        <div class="valor"><i class="fa-regular fa-user"></i> <span>Asesoría personalizada en cada caso</span></div>
     </div>
 
+    <!-- 7. Footer -->
     <footer class="footer-final">
         <p><i class="fa-solid fa-scale-balanced"></i> <strong>AP&U ESTUDIO JURÍDICO</strong></p>
-        <p style="font-style: italic; font-size: 0.8rem; color: #aaa; margin-top: 5px;">Defendemos tus derechos, protegemos tu futuro.</p>
+        <p class="subtitulo">Defendemos tus derechos, protegemos tu futuro.</p>
     </footer>
 
 </body>
