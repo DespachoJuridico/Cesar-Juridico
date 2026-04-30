@@ -3,97 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AP&U Estudio Jurídico</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <title>Lic. Cesar Adriano - Estudio Jurídico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        :root {
+            --navy-dark: #0a192f;
+            --navy-medium: #112240;
+            --gold: #b0935a;
+            --text-gray: #555;
+            --bg-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #d1d8e0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Cabecera con degradado sutil */
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            background: radial-gradient(circle, #ffffff 0%, #f0f0f0 100%);
+        }
+
+        .logo-main {
+            width: 180px;
+            margin-bottom: 15px;
+        }
+
+        .firm-tag {
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .lawyer-name {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--navy-dark);
+            border-top: 1px solid var(--gold);
+            border-bottom: 1px solid var(--gold);
+            padding: 10px 0;
+            margin: 15px 40px;
+        }
+
+        .specialties {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--navy-dark);
+            line-height: 1.6;
+        }
+
+        /* Sección "¿Cómo podemos ayudarte?" */
+        .help-section {
+            text-align: center;
+            padding: 20px 30px;
+        }
+
+        .help-section h2 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .help-section p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        /* Grid de Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding: 0 20px 20px;
+        }
+
+        .service-box {
+            background: var(--bg-light);
+            padding: 20px 10px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-box i {
+            font-size: 2.5rem;
+            color: var(--navy-dark);
+            margin-bottom: 10px;
+        }
+
+        .service-box h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: var(--navy-dark);
+        }
+
+        .service-box p {
+            font-size: 0.7rem;
+            color: #666;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Botones de Contacto (Barra Oscura) */
+        .contact-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: var(--navy-dark);
+            padding: 15px 0;
+        }
+
+        .contact-btn {
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            font-size: 0.6rem;
+            font-weight: 600;
+        }
+
+        .contact-btn i {
+            display: block;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+
+        .fa-whatsapp { color: #25D366; }
+        .fa-phone { color: #f39c12; }
+        .fa-location-dot { color: #e74c3c; }
+
+        /* Barra de Valores */
+        .values-bar {
+            background: #051020;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            color: white;
+            font-size: 0.65rem;
+            border-top: 1px solid #1a2a40;
+        }
+
+        .value-item { display: flex; align-items: center; gap: 5px; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.75rem;
+            color: var(--navy-dark);
+        }
+
+        footer span { color: var(--gold); }
+    </style>
 </head>
 <body>
 
-    <div class="card-container">
-        <header class="header">
-            <div class="main-logo">
-                <img src="apu.png">
-                <p class="subtitle-logo">ESTUDIO JURÍDICO</p>
-            </div>
-            
-            <div class="profile-title">
-                <h1>LIC. CESAR ADRIANO</h1>
-                <div class="gold-divider">
-                    <i class="fas fa-balance-scale"></i>
-                </div>
-                <h3>JUICIOS CIVILES, MERCANTILES Y FAMILIARES</h3>
-                <h3>AMPARO</h3>
-            </div>
-        </header>
-
-        <section class="intro">
-            <h2>¿CÓMO PODEMOS AYUDARTE?</h2>
-            <p>Brindamos asesoría y representación legal con profesionalismo, ética y compromiso, buscando siempre la mejor solución para cada caso.</p>
-        </section>
-
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-handshake"></i>
-                <h4>JUICIOS CIVILES</h4>
-                <p>Conflictos entre particulares: contratos, deudas, arrendamientos y daños.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-chart-line"></i>
-                <h4>JUICIOS MERCANTILES</h4>
-                <p>Soluciones para empresas: contratos, pagarés, cobranza y quiebras.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-users"></i>
-                <h4>JUICIOS FAMILIARES</h4>
-                <p>Divorcios, pensiones, custodia y sucesiones.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-university"></i>
-                <h4>AMPARO</h4>
-                <p>Protección contra actos de autoridad que vulneren tus garantías.</p>
-            </div>
+<div class="card">
+    <header>
+        <div class="firm-tag">Estudio Jurídico</div>
+        <img src="apu.png">
+        <h1 class="lawyer-name">LIC. CESAR ADRIANO</h1>
+        <div class="specialties">
+            JUICIOS CIVILES, MERCANTILES Y FAMILIARES<br>
+            AMPARO
         </div>
+    </header>
 
-        <div class="action-buttons">
-            <a href="https://wa.me/6251101156" class="btn btn-whatsapp">
-                <i class="fab fa-whatsapp"></i>
-                <span>WHATSAPP<br>625 110 1156</span>
-            </a>
-            <a href="tel:6251101156" class="btn btn-call">
-                <i class="fas fa-phone"></i>
-                <span>LLAMAR<br>625 110 1156</span>
-            </a>
-            <a href="#" class="btn btn-location">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>UBICACIÓN<br>Ver en Maps</span>
-            </a>
-            <a href="#" class="btn btn-contact">
-                <i class="fas fa-user-plus"></i>
-                <span>CONTACTO<br>Agregar</span>
-            </a>
+    <section class="help-section">
+        <h2>¿CÓMO PODEMOS AYUDARTE?</h2>
+        <p>Brindamos asesoría y representación legal con profesionalismo, ética y compromiso, buscando siempre la mejor solución para cada caso.</p>
+    </section>
+
+    <section class="services-grid">
+        <div class="service-box">
+            <i class="fa-solid fa-handshake"></i>
+            <h3>Juicios Civiles</h3>
+            <p>Conflictos entre particulares, contratos, deudas y arrendamientos.</p>
         </div>
-
-        <footer class="footer-values">
-            <div class="value-item">
-                <i class="fas fa-envelope"></i>
-                <p>Atención profesional</p>
-            </div>
-            <div class="value-item">
-                <i class="fas fa-check-circle"></i>
-                <p>Compromiso real</p>
-            </div>
-            <div class="value-item">
-                <i class="fas fa-user-tie"></i>
-                <p>Asesoría personalizada</p>
-            </div>
-        </footer>
-
-        <div class="bottom-branding">
-            <p><strong>AP&U ESTUDIO JURÍDICO</strong></p>
-            <p class="slogan">Defendemos tus derechos, protegemos tu futuro.</p>
+        <div class="service-box">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>Juicios Mercantiles</h3>
+            <p>Soluciones para empresas, pagarés, cobranza y sociedades.</p>
         </div>
+        <div class="service-box">
+            <i class="fa-solid fa-users"></i>
+            <h3>Juicios Familiares</h3>
+            <p>Divorcios, pensiones, custodia y sucesiones.</p>
+        </div>
+        <div class="service-box">
+            <i class="fa-solid fa-building-columns"></i>
+            <h3>Amparo</h3>
+            <p>Protección de derechos contra actos de autoridad.</p>
+        </div>
+    </section>
+
+    <div class="contact-bar">
+        <a href="https://wa.me/526251101156" class="contact-btn">
+            <i class="fa-brands fa-whatsapp"></i> WHATSAPP
+        </a>
+        <a href="tel:6251101156" class="contact-btn">
+            <i class="fa-solid fa-phone"></i> LLAMAR
+        </a>
+        <a href="#" class="contact-btn">
+            <i class="fa-solid fa-location-dot"></i> UBICACIÓN
+        </a>
+        <a href="#" class="contact-btn">
+            <i class="fa-solid fa-address-book"></i> GUARDAR
+        </a>
     </div>
+
+    <div class="values-bar">
+        <div class="value-item"><i class="fa-regular fa-envelope"></i> Atención Profesional</div>
+        <div class="value-item"><i class="fa-regular fa-circle-check"></i> Compromiso</div>
+        <div class="value-item"><i class="fa-regular fa-user"></i> Asesoría Personal</div>
+    </div>
+
+    <footer>
+        <p><strong>AP&U ESTUDIO JURÍDICO</strong></p>
+        <p><i>Defendemos tus derechos, protegemos tu futuro.</i></p>
+    </footer>
+</div>
 
 </body>
 </html>
