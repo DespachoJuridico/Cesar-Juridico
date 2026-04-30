@@ -11,273 +11,255 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Variables de color basadas en tu imagen original */
+        /* Variables de color */
         :root {
             --azul-oscuro: #1b263b;
             --azul-botones: #14213d;
             --dorado: #b0935a;
-            --fondo-gris: #f4f5f7;
+            --fondo-gris: #f8f9fa;
             --blanco: #ffffff;
         }
 
+        /* Reseteo básico para ocupar el 100% de la pantalla */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        /* Fondo de la pantalla exterior (para que resalte la tarjeta) */
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #333333; /* Un fondo oscuro para que veas los límites de la página */
-            display: flex;
-            justify-content: center;
-            padding: 20px 10px;
-            min-height: 100vh;
+            background-color: var(--fondo-gris);
+            color: #333;
+            width: 100vw;
+            overflow-x: hidden; /* Evita que la página se mueva hacia los lados */
         }
 
-        /* EL CONTENEDOR PRINCIPAL (La "Tarjeta") */
-        .tarjeta-principal {
-            width: 100%;
-            max-width: 550px; /* Evita que se estire en pantallas grandes */
-            background-color: var(--fondo-gris); /* Fondo gris muy claro como la original */
-            border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* 1. SECCIÓN DEL LOGO */
-        .cabecera-logo {
+        /* 1. CABECERA (Logo a pantalla completa) */
+        .cabecera {
+            background: linear-gradient(to bottom, #ffffff, #f0f2f5);
             text-align: center;
-            padding: 40px 20px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 50px 20px 20px; 
+            width: 100%;
         }
 
-        .cabecera-logo img {
-            width: 220px; /* Tamaño del logo */
-            max-width: 80%;
-            margin-bottom: 15px;
-            /* Si la imagen no carga, esto le da un estilo al texto alternativo */
-            font-size: 14px;
-            color: #888;
+        .logo-contenedor img {
+            width: 100%;
+            max-width: 250px; /* El logo no crecerá más de esto en PC, pero se achicará en móviles */
+            height: auto;
         }
 
         .texto-estudio {
-            font-size: 14px;
-            letter-spacing: 3px;
+            font-size: 16px;
+            letter-spacing: 5px;
             color: #666;
             text-transform: uppercase;
             font-weight: 600;
+            margin-top: 15px;
         }
 
-        /* 2. PANEL DEL NOMBRE (La caja blanca flotante) */
+        /* 2. PANEL DEL NOMBRE (Banda completa de lado a lado) */
         .panel-nombre {
             background-color: var(--blanco);
-            margin: 10px 25px 25px; /* Separación de los bordes */
-            padding: 25px 20px;
-            border-radius: 12px;
+            width: 100%;
+            padding: 40px 20px;
             text-align: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            border-top: 2px solid var(--dorado);
+            border-bottom: 2px solid var(--dorado);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
         }
 
         .nombre-abogado {
             font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
+            font-size: clamp(2rem, 5vw, 3.5rem); /* Texto fluido: crece en PC y se ajusta en móvil */
             color: var(--azul-oscuro);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        /* El divisor dorado con la balanza */
         .divisor-dorado {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .divisor-dorado span {
             height: 1px;
-            width: 60px;
+            width: 80px;
             background-color: var(--dorado);
         }
 
         .divisor-dorado i {
             color: var(--dorado);
-            font-size: 1.2rem;
+            font-size: 1.5rem;
         }
 
         .especialidades {
-            font-size: 0.85rem;
+            font-size: clamp(0.85rem, 2vw, 1.1rem);
             font-weight: 700;
             color: var(--azul-oscuro);
-            letter-spacing: 1px;
-            line-height: 1.5;
+            letter-spacing: 1.5px;
+            line-height: 1.6;
         }
 
         /* 3. SECCIÓN DE AYUDA */
         .seccion-ayuda {
             text-align: center;
-            padding: 0 30px 20px;
+            padding: 60px 20px 40px;
+            max-width: 800px;
+            margin: 0 auto; /* Centra el texto en pantallas gigantes */
         }
 
         .seccion-ayuda h2 {
             color: var(--dorado);
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
         }
 
         .seccion-ayuda p {
-            font-size: 0.9rem;
+            font-size: 1.05rem;
             color: #555;
             line-height: 1.6;
         }
 
-        /* 4. GRID DE SERVICIOS */
+        /* 4. GRID DE SERVICIOS (Adaptable) */
+        .contenedor-servicios {
+            max-width: 1200px; /* Límite para que no se vea desproporcionado en monitores muy grandes */
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
         .grid-servicios {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Dos columnas fijas */
-            gap: 15px;
-            padding: 0 25px 25px;
+            /* Esta línea hace la magia: 1 columna en celular, 2 en tablet, 4 en PC automáticamente */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 25px;
         }
 
         .tarjeta-servicio {
             background-color: var(--blanco);
-            border-radius: 10px;
-            padding: 20px 15px;
+            border-radius: 12px;
+            padding: 30px 20px;
             text-align: center;
             border: 1px solid #eaeaea;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease;
+        }
+
+        .tarjeta-servicio:hover {
+            transform: translateY(-5px); /* Efecto de elevación al pasar el mouse en PC */
         }
 
         .tarjeta-servicio i {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--azul-oscuro);
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .tarjeta-servicio h3 {
-            font-size: 0.8rem;
+            font-size: 1rem;
             color: var(--azul-oscuro);
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             text-transform: uppercase;
         }
 
         .tarjeta-servicio p {
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             color: #666;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
-        /* 5. BARRA DE BOTONES (WhatsApp, Llamar, etc.) */
+        /* 5. BARRA DE BOTONES (100% de ancho) */
         .barra-botones {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex;
+            flex-wrap: wrap; /* Permite que los botones se acomoden en móviles */
+            width: 100%;
             background-color: var(--azul-botones);
-            padding: 15px 10px;
-            gap: 5px;
         }
 
         .boton-contacto {
+            flex: 1 1 25%; /* Intenta ocupar el 25% (4 botones). Si no cabe, baja. */
+            padding: 25px 10px;
             text-decoration: none;
             color: var(--blanco);
             text-align: center;
-            font-size: 0.65rem;
+            font-size: 0.8rem;
             font-weight: 600;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            border-right: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .boton-contacto i {
-            font-size: 1.8rem;
-        }
-
-        /* Colores específicos de los iconos inferiores */
+        .boton-contacto i { font-size: 2.2rem; }
         .icon-wa { color: #25D366; }
         .icon-llam { color: #e5a55d; }
         .icon-map { color: #ff5a5f; }
         .icon-user { color: #d1d8e0; }
 
         .subtexto-boton {
-            font-size: 0.55rem;
+            font-size: 0.7rem;
             color: #aaa;
             font-weight: 400;
-            margin-top: 2px;
         }
 
         /* 6. BARRA DE VALORES INFERIOR */
         .barra-valores {
-            background-color: #0d1526; /* Aún más oscuro */
-            padding: 15px 10px;
+            background-color: #0d1526;
+            padding: 25px 20px;
             display: flex;
-            justify-content: space-around;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
         }
 
         .valor {
             color: var(--blanco);
-            font-size: 0.65rem;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .valor i {
-            font-size: 1.2rem;
-            color: #888;
-        }
+        .valor i { font-size: 1.4rem; color: #888; }
 
         /* 7. FOOTER FINAL */
         .footer-final {
             background-color: var(--azul-botones);
-            padding: 20px;
+            padding: 30px 20px;
             text-align: center;
             color: var(--blanco);
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        .footer-final p {
-            font-size: 0.8rem;
-            margin-bottom: 5px;
-        }
+        .footer-final p { font-size: 1rem; margin-bottom: 5px; }
+        .footer-final i { color: var(--dorado); margin-right: 5px; }
+        .footer-final .subtitulo { font-size: 0.85rem; font-style: italic; color: #aaa; }
 
-        .footer-final i {
-            color: var(--dorado);
-            margin-right: 5px;
-        }
-
-        .footer-final .subtitulo {
-            font-size: 0.7rem;
-            font-style: italic;
-            color: #aaa;
-        }
-
-        /* Ajustes para teléfonos muy estrechos */
-        @media (max-width: 400px) {
-            .grid-servicios { grid-template-columns: 1fr; }
-            .barra-botones { padding: 15px 2px; }
-            .boton-contacto { font-size: 0.55rem; }
-            .barra-valores { flex-direction: column; gap: 10px; align-items: center; }
+        /* REGLAS PARA TELÉFONOS MÓVILES */
+        @media (max-width: 600px) {
+            .boton-contacto { flex: 1 1 50%; /* En móviles, los botones se ponen en 2 filas de 2 */ }
+            .divisor-dorado span { width: 40px; }
+            .valor { flex: 1 1 100%; justify-content: center; /* Valores apilados en móvil */ }
         }
     </style>
 </head>
 <body>
 
-<!-- Aquí comienza la tarjeta que agrupa todo -->
-<div class="tarjeta-principal">
+    <!-- 1. Cabecera -->
+    <header class="cabecera">
+        <div class="logo-contenedor">
+            <!-- RECUERDA: Recorta tu imagen original para que solo se vea el escudo y guárdala como logo.png -->
+            <img src="logo.png" alt="Logo AP&U">
+            <div class="texto-estudio">ESTUDIO JURÍDICO</div>
+        </div>
+    </header>
 
-    <!-- 1. Logo y Título superior -->
-    <div class="cabecera-logo">
-        <!-- AQUÍ VA LA IMAGEN: Asegúrate de que el archivo se llame logo.png y esté en la misma carpeta -->
-        <img src="logo.png">
-        <div class="texto-estudio">ESTUDIO JURÍDICO</div>
-    </div>
-
-    <!-- 2. Panel blanco flotante con el nombre -->
-    <div class="panel-nombre">
+    <!-- 2. Panel del Nombre -->
+    <section class="panel-nombre">
         <h1 class="nombre-abogado">LIC. CESAR ADRIANO</h1>
         <div class="divisor-dorado">
             <span></span>
@@ -288,39 +270,41 @@
             JUICIOS CIVILES, MERCANTILES Y FAMILIARES<br>
             AMPARO
         </div>
-    </div>
+    </section>
 
     <!-- 3. Texto de ayuda -->
-    <div class="seccion-ayuda">
+    <section class="seccion-ayuda">
         <h2>¿CÓMO PODEMOS AYUDARTE?</h2>
         <p>Brindamos asesoría y representación legal con profesionalismo, ética y compromiso, buscando siempre la mejor solución para cada caso.</p>
-    </div>
+    </section>
 
-    <!-- 4. Cuadrícula de 4 servicios -->
-    <div class="grid-servicios">
-        <div class="tarjeta-servicio">
-            <i class="fa-solid fa-handshake"></i>
-            <h3>JUICIOS CIVILES</h3>
-            <p>Atendemos conflictos entre particulares relacionados con contratos, pago de deudas, arrendamientos, daños y perjuicios.</p>
+    <!-- 4. Cuadrícula de Servicios -->
+    <section class="contenedor-servicios">
+        <div class="grid-servicios">
+            <div class="tarjeta-servicio">
+                <i class="fa-solid fa-handshake"></i>
+                <h3>JUICIOS CIVILES</h3>
+                <p>Atendemos conflictos entre particulares relacionados con contratos, pago de deudas, arrendamientos, daños y perjuicios.</p>
+            </div>
+            <div class="tarjeta-servicio">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>JUICIOS MERCANTILES</h3>
+                <p>Soluciones legales para empresas y negocios en materia de contratos, pagarés, cobranza, sociedades y quiebras.</p>
+            </div>
+            <div class="tarjeta-servicio">
+                <i class="fa-solid fa-users"></i>
+                <h3>JUICIOS FAMILIARES</h3>
+                <p>Asesoría y representación en asuntos de divorcios, pensiones alimenticias, custodia, convivencia y sucesiones.</p>
+            </div>
+            <div class="tarjeta-servicio">
+                <i class="fa-solid fa-building-columns"></i>
+                <h3>AMPARO</h3>
+                <p>Protegemos tus derechos mediante el juicio de amparo contra actos de autoridad que vulneren las garantías.</p>
+            </div>
         </div>
-        <div class="tarjeta-servicio">
-            <i class="fa-solid fa-chart-line"></i>
-            <h3>JUICIOS MERCANTILES</h3>
-            <p>Soluciones legales para empresas y negocios en materia de contratos, pagarés, cobranza, sociedades y quiebras.</p>
-        </div>
-        <div class="tarjeta-servicio">
-            <i class="fa-solid fa-users"></i>
-            <h3>JUICIOS FAMILIARES</h3>
-            <p>Asesoría y representación en asuntos de divorcios, pensiones alimenticias, custodia, convivencia y sucesiones.</p>
-        </div>
-        <div class="tarjeta-servicio">
-            <i class="fa-solid fa-building-columns"></i>
-            <h3>AMPARO</h3>
-            <p>Protegemos tus derechos mediante el juicio de amparo contra actos de autoridad que vulneren las garantías.</p>
-        </div>
-    </div>
+    </section>
 
-    <!-- 5. Botones de acción inferiores -->
+    <!-- 5. Botones de acción -->
     <div class="barra-botones">
         <a href="https://wa.me/526251101156" class="boton-contacto">
             <i class="fa-brands fa-whatsapp icon-wa"></i>
@@ -340,24 +324,22 @@
         <a href="#" class="boton-contacto">
             <i class="fa-solid fa-address-card icon-user"></i>
             GUARDAR CONTACTO
-            <span class="subtexto-boton">Agregar</span>
+            <span class="subtexto-boton">Agregar a agenda</span>
         </a>
     </div>
 
-    <!-- 6. Valores extra -->
+    <!-- 6. Valores -->
     <div class="barra-valores">
-        <div class="valor"><i class="fa-regular fa-envelope"></i> <span>Atención<br>profesional</span></div>
-        <div class="valor"><i class="fa-regular fa-square-check"></i> <span>Compromiso<br>y resultados</span></div>
-        <div class="valor"><i class="fa-regular fa-user"></i> <span>Asesoría<br>personalizada</span></div>
+        <div class="valor"><i class="fa-regular fa-envelope"></i> <span>Atención profesional y confidencial</span></div>
+        <div class="valor"><i class="fa-regular fa-square-check"></i> <span>Compromiso y resultados efectivos</span></div>
+        <div class="valor"><i class="fa-regular fa-user"></i> <span>Asesoría personalizada en cada caso</span></div>
     </div>
 
     <!-- 7. Footer -->
-    <div class="footer-final">
+    <footer class="footer-final">
         <p><i class="fa-solid fa-scale-balanced"></i> <strong>AP&U ESTUDIO JURÍDICO</strong></p>
         <p class="subtitulo">Defendemos tus derechos, protegemos tu futuro.</p>
-    </div>
-
-</div>
+    </footer>
 
 </body>
 </html>
