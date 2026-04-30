@@ -5,20 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estudio Jurídico - Lic. Cesar Adriano</title>
     
-    <!-- Fuentes premium de Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Iconos de Font Awesome para una carga rápida y nítida -->
+    <!-- Fuentes de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos vectoriales -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* Variables de color basadas en tu imagen original */
         :root {
-            --azul-marino: #0a192f;
-            --azul-oscuro-fondo: #051020;
+            --azul-oscuro: #1b263b;
+            --azul-botones: #14213d;
             --dorado: #b0935a;
-            --gris-texto: #555;
-            --gris-fondo: #f8f9fa;
+            --fondo-gris: #f4f5f7;
             --blanco: #ffffff;
-            --sombre: 0 10px 25px rgba(0,0,0,0.15);
         }
 
         * {
@@ -27,295 +26,337 @@
             padding: 0;
         }
 
+        /* Fondo de la pantalla exterior (para que resalte la tarjeta) */
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #d1d8e0; /* Fondo de la página para que la tarjeta resalte */
+            background-color: #333333; /* Un fondo oscuro para que veas los límites de la página */
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            padding: 20px 10px;
             min-height: 100vh;
-            padding: 20px 0;
-            overflow-x: hidden;
         }
 
-        /* Contenedor principal de la vCard (Tarjeta Digital) */
-        .vcard-container {
-            width: 90%;
-            max-width: 480px; /* Tamaño máximo para legibilidad en escritorio */
-            background-color: var(--blanco);
-            border-radius: 12px;
-            box-shadow: var(--sombre);
+        /* EL CONTENEDOR PRINCIPAL (La "Tarjeta") */
+        .tarjeta-principal {
+            width: 100%;
+            max-width: 550px; /* Evita que se estire en pantallas grandes */
+            background-color: var(--fondo-gris); /* Fondo gris muy claro como la original */
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            position: relative;
         }
 
-        /* Sección 1: Marca de la Cabecera (Logo y Texto) */
-        .header-branding {
+        /* 1. SECCIÓN DEL LOGO */
+        .cabecera-logo {
             text-align: center;
             padding: 40px 20px 20px;
-            background: radial-gradient(circle, #ffffff 0%, #f1f1f1 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .header-branding img {
-            width: clamp(140px, 40%, 180px); /* El logo escala */
+        .cabecera-logo img {
+            width: 220px; /* Tamaño del logo */
+            max-width: 80%;
+            margin-bottom: 15px;
+            /* Si la imagen no carga, esto le da un estilo al texto alternativo */
+            font-size: 14px;
+            color: #888;
+        }
+
+        .texto-estudio {
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* 2. PANEL DEL NOMBRE (La caja blanca flotante) */
+        .panel-nombre {
+            background-color: var(--blanco);
+            margin: 10px 25px 25px; /* Separación de los bordes */
+            padding: 25px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        }
+
+        .nombre-abogado {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--azul-oscuro);
             margin-bottom: 10px;
         }
 
-        .header-branding .firm-tag {
-            font-size: 14px;
-            letter-spacing: 4px;
-            color: #888;
-            text-transform: uppercase;
-        }
-
-        /* Sección 2: Panel del Abogado (Fondo blanco separado, borde dorado) */
-        .lawyer-panel {
-            background-color: var(--blanco);
-            padding: 20px 30px;
-            text-align: center;
-            margin: -10px 20px 20px; /* Margen negativo superior para "flotar" ligeramente sobre el degradado */
-            border-radius: 10px;
-            border: 1px solid rgba(176, 147, 90, 0.3); /* Borde dorado sutil */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-
-        .lawyer-name {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(1.8rem, 6vw, 2.3rem); /* Tipografía fluida */
-            color: var(--azul-marino);
-            margin-bottom: 15px;
-        }
-
-        .specialty-divider {
+        /* El divisor dorado con la balanza */
+        .divisor-dorado {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
-            color: var(--dorado);
             margin-bottom: 15px;
         }
 
-        .specialty-divider span {
-            flex-grow: 1;
+        .divisor-dorado span {
             height: 1px;
-            background-color: rgba(176, 147, 90, 0.3);
+            width: 60px;
+            background-color: var(--dorado);
         }
 
-        .specialties {
-            font-size: clamp(0.7rem, 3vw, 0.8rem);
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--azul-marino);
-            line-height: 1.5;
-            text-transform: uppercase;
-        }
-
-        /* Sección 3: Cuerpo de la Tarjeta (Ayuda y Grid de Servicios) */
-        .card-body {
-            padding: 0 20px 20px;
-        }
-
-        .help-title {
+        .divisor-dorado i {
             color: var(--dorado);
-            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            font-size: 1.2rem;
+        }
+
+        .especialidades {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--azul-oscuro);
+            letter-spacing: 1px;
+            line-height: 1.5;
+        }
+
+        /* 3. SECCIÓN DE AYUDA */
+        .seccion-ayuda {
             text-align: center;
+            padding: 0 30px 20px;
+        }
+
+        .seccion-ayuda h2 {
+            color: var(--dorado);
+            font-size: 1.2rem;
             margin-bottom: 10px;
         }
 
-        .help-text {
-            text-align: center;
+        .seccion-ayuda p {
             font-size: 0.9rem;
-            color: var(--gris-texto);
-            line-height: 1.5;
-            margin-bottom: 25px;
+            color: #555;
+            line-height: 1.6;
         }
 
-        .services-grid {
+        /* 4. GRID DE SERVICIOS */
+        .grid-servicios {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); /* Responsividad automática del grid */
-            gap: 12px;
-            margin-bottom: 20px;
+            grid-template-columns: 1fr 1fr; /* Dos columnas fijas */
+            gap: 15px;
+            padding: 0 25px 25px;
         }
 
-        .service-card {
-            background-color: var(--gris-fondo);
-            padding: 20px 10px;
-            border-radius: 8px;
+        .tarjeta-servicio {
+            background-color: var(--blanco);
+            border-radius: 10px;
+            padding: 20px 15px;
             text-align: center;
-            border: 1px solid rgba(0,0,0,0.03);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            border: 1px solid #eaeaea;
         }
 
-        .service-card i {
-            font-size: 2rem;
-            color: var(--azul-marino);
+        .tarjeta-servicio i {
+            font-size: 2.2rem;
+            color: var(--azul-oscuro);
             margin-bottom: 12px;
         }
 
-        .service-card h3 {
+        .tarjeta-servicio h3 {
             font-size: 0.8rem;
-            text-transform: uppercase;
-            color: var(--azul-marino);
+            color: var(--azul-oscuro);
             margin-bottom: 8px;
-            font-weight: 600;
+            text-transform: uppercase;
         }
 
-        .service-card p {
-            font-size: clamp(0.7rem, 3vw, 0.75rem);
-            color: #777;
+        .tarjeta-servicio p {
+            font-size: 0.75rem;
+            color: #666;
             line-height: 1.4;
         }
 
-        /* Sección 4: Barra de Contacto (Azul Marino Oscuro) */
-        .contact-bar {
+        /* 5. BARRA DE BOTONES (WhatsApp, Llamar, etc.) */
+        .barra-botones {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            background-color: var(--azul-marino);
-            padding: 15px 5px;
+            background-color: var(--azul-botones);
+            padding: 15px 10px;
+            gap: 5px;
         }
 
-        .contact-btn {
-            text-align: center;
-            color: var(--blanco);
+        .boton-contacto {
             text-decoration: none;
-            font-size: clamp(0.6rem, 2.5vw, 0.65rem);
+            color: var(--blanco);
+            text-align: center;
+            font-size: 0.65rem;
             font-weight: 600;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
         }
 
-        .contact-btn i {
-            font-size: clamp(1.4rem, 5vw, 1.6rem);
-            display: block;
+        .boton-contacto i {
+            font-size: 1.8rem;
         }
 
-        .fa-whatsapp { color: #25D366; }
-        .fa-phone { color: #e5a55d; }
-        .fa-location-dot { color: #ff5a5f; }
+        /* Colores específicos de los iconos inferiores */
+        .icon-wa { color: #25D366; }
+        .icon-llam { color: #e5a55d; }
+        .icon-map { color: #ff5a5f; }
+        .icon-user { color: #d1d8e0; }
 
-        /* Sección 5: Barra de Valores (Gris Muy Oscuro) */
-        .values-bar {
-            background-color: var(--azul-oscuro-fondo);
+        .subtexto-boton {
+            font-size: 0.55rem;
+            color: #aaa;
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        /* 6. BARRA DE VALORES INFERIOR */
+        .barra-valores {
+            background-color: #0d1526; /* Aún más oscuro */
             padding: 15px 10px;
             display: flex;
             justify-content: space-around;
-            color: var(--blanco);
-            font-size: clamp(0.6rem, 2.5vw, 0.65rem);
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        .value-item {
+        .valor {
+            color: var(--blanco);
+            font-size: 0.65rem;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
 
-        /* Sección 6: Pie de Página Final */
-        footer {
-            padding: 25px 20px;
+        .valor i {
+            font-size: 1.2rem;
+            color: #888;
+        }
+
+        /* 7. FOOTER FINAL */
+        .footer-final {
+            background-color: var(--azul-botones);
+            padding: 20px;
             text-align: center;
-            font-size: clamp(0.75rem, 3vw, 0.8rem);
-            color: var(--azul-marino);
+            color: var(--blanco);
         }
 
-        footer p {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+        .footer-final p {
+            font-size: 0.8rem;
+            margin-bottom: 5px;
         }
 
-        /* Ajustes específicos para pantallas muy pequeñas */
-        @media (max-width: 350px) {
-            .services-grid { grid-template-columns: 1fr; }
-            .lawyer-panel { margin: -10px 10px 15px; }
+        .footer-final i {
+            color: var(--dorado);
+            margin-right: 5px;
+        }
+
+        .footer-final .subtitulo {
+            font-size: 0.7rem;
+            font-style: italic;
+            color: #aaa;
+        }
+
+        /* Ajustes para teléfonos muy estrechos */
+        @media (max-width: 400px) {
+            .grid-servicios { grid-template-columns: 1fr; }
+            .barra-botones { padding: 15px 2px; }
+            .boton-contacto { font-size: 0.55rem; }
+            .barra-valores { flex-direction: column; gap: 10px; align-items: center; }
         }
     </style>
 </head>
 <body>
 
-<div class="vcard-container">
-    <header class="header-branding">
-        <div class="firm-tag">Estudio Jurídico</div>
-        <!-- Reemplaza el src con la URL de la imagen del logo recreado -->
-        <img src="watermarked_img_2901308365859756184.png" alt="Logo AP&U">
-    </header>
+<!-- Aquí comienza la tarjeta que agrupa todo -->
+<div class="tarjeta-principal">
 
-    <section class="lawyer-panel">
-        <h1 class="lawyer-name">LIC. CESAR ADRIANO</h1>
-        <div class="specialty-divider">
+    <!-- 1. Logo y Título superior -->
+    <div class="cabecera-logo">
+        <!-- AQUÍ VA LA IMAGEN: Asegúrate de que el archivo se llame logo.png y esté en la misma carpeta -->
+        <img src="logo.png" alt="Logo AP&U">
+        <div class="texto-estudio">ESTUDIO JURÍDICO</div>
+    </div>
+
+    <!-- 2. Panel blanco flotante con el nombre -->
+    <div class="panel-nombre">
+        <h1 class="nombre-abogado">LIC. CESAR ADRIANO</h1>
+        <div class="divisor-dorado">
             <span></span>
             <i class="fa-solid fa-scale-balanced"></i>
             <span></span>
         </div>
-        <div class="specialties">
+        <div class="especialidades">
             JUICIOS CIVILES, MERCANTILES Y FAMILIARES<br>
             AMPARO
         </div>
-    </section>
+    </div>
 
-    <div class="card-body">
-        <h2 class="help-title">¿CÓMO PODEMOS AYUDARTE?</h2>
-        <p class="help-text">Brindamos asesoría y representación legal con profesionalismo, ética y compromiso, buscando siempre la mejor solución para cada caso.</p>
+    <!-- 3. Texto de ayuda -->
+    <div class="seccion-ayuda">
+        <h2>¿CÓMO PODEMOS AYUDARTE?</h2>
+        <p>Brindamos asesoría y representación legal con profesionalismo, ética y compromiso, buscando siempre la mejor solución para cada caso.</p>
+    </div>
 
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fa-solid fa-handshake"></i>
-                <h3>Juicios Civiles</h3>
-                <p>Contratos, pago de deudas y arrendamientos.</p>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-chart-line"></i>
-                <h3>Juicios Mercantiles</h3>
-                <p>Empresas, pagarés, cobranza y sociedades.</p>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-users"></i>
-                <h3>Juicios Familiares</h3>
-                <p>Divorcios, pensiones y custodia.</p>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-building-columns"></i>
-                <h3>Amparo</h3>
-                <p>Protección contra actos de autoridad.</p>
-            </div>
+    <!-- 4. Cuadrícula de 4 servicios -->
+    <div class="grid-servicios">
+        <div class="tarjeta-servicio">
+            <i class="fa-solid fa-handshake"></i>
+            <h3>JUICIOS CIVILES</h3>
+            <p>Atendemos conflictos entre particulares relacionados con contratos, pago de deudas, arrendamientos, daños y perjuicios.</p>
+        </div>
+        <div class="tarjeta-servicio">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>JUICIOS MERCANTILES</h3>
+            <p>Soluciones legales para empresas y negocios en materia de contratos, pagarés, cobranza, sociedades y quiebras.</p>
+        </div>
+        <div class="tarjeta-servicio">
+            <i class="fa-solid fa-users"></i>
+            <h3>JUICIOS FAMILIARES</h3>
+            <p>Asesoría y representación en asuntos de divorcios, pensiones alimenticias, custodia, convivencia y sucesiones.</p>
+        </div>
+        <div class="tarjeta-servicio">
+            <i class="fa-solid fa-building-columns"></i>
+            <h3>AMPARO</h3>
+            <p>Protegemos tus derechos mediante el juicio de amparo contra actos de autoridad que vulneren las garantías.</p>
         </div>
     </div>
 
-    <div class="contact-bar">
-        <a href="https://wa.me/526251101156" class="contact-btn">
-            <i class="fa-brands fa-whatsapp"></i> WHATSAPP
+    <!-- 5. Botones de acción inferiores -->
+    <div class="barra-botones">
+        <a href="https://wa.me/526251101156" class="boton-contacto">
+            <i class="fa-brands fa-whatsapp icon-wa"></i>
+            WHATSAPP
+            <span class="subtexto-boton">625 110 1156</span>
         </a>
-        <a href="tel:6251101156" class="contact-btn">
-            <i class="fa-solid fa-phone"></i> LLAMAR
+        <a href="tel:6251101156" class="boton-contacto">
+            <i class="fa-solid fa-phone icon-llam"></i>
+            LLAMAR
+            <span class="subtexto-boton">625 110 1156</span>
         </a>
-        <a href="#" class="contact-btn">
-            <i class="fa-solid fa-location-dot"></i> UBICACIÓN
+        <a href="#" class="boton-contacto">
+            <i class="fa-solid fa-location-dot icon-map"></i>
+            UBICACIÓN
+            <span class="subtexto-boton">Ver en Maps</span>
         </a>
-        <a href="#" class="contact-btn">
-            <i class="fa-solid fa-user-check"></i> GUARDAR
+        <a href="#" class="boton-contacto">
+            <i class="fa-solid fa-address-card icon-user"></i>
+            GUARDAR CONTACTO
+            <span class="subtexto-boton">Agregar</span>
         </a>
     </div>
 
-    <div class="values-bar">
-        <div class="value-item"><i class="fa-regular fa-envelope"></i> Profesional y Confidencial</div>
-        <div class="value-item"><i class="fa-regular fa-star"></i> Compromiso y Resultados</div>
-        <div class="value-item"><i class="fa-regular fa-user"></i> Asesoría Personal</div>
+    <!-- 6. Valores extra -->
+    <div class="barra-valores">
+        <div class="valor"><i class="fa-regular fa-envelope"></i> <span>Atención<br>profesional</span></div>
+        <div class="valor"><i class="fa-regular fa-square-check"></i> <span>Compromiso<br>y resultados</span></div>
+        <div class="valor"><i class="fa-regular fa-user"></i> <span>Asesoría<br>personalizada</span></div>
     </div>
 
-    <footer>
-        <p>
-            <i class="fa-solid fa-scale-balanced" style="color: var(--dorado); font-size: 1.2rem;"></i>
-            <strong>AP&U ESTUDIO JURÍDICO</strong>
-        </p>
-        <p style="font-style: italic; margin-top: 5px;">Defendemos tus derechos, protegemos tu futuro.</p>
-    </footer>
+    <!-- 7. Footer -->
+    <div class="footer-final">
+        <p><i class="fa-solid fa-scale-balanced"></i> <strong>AP&U ESTUDIO JURÍDICO</strong></p>
+        <p class="subtitulo">Defendemos tus derechos, protegemos tu futuro.</p>
+    </div>
+
 </div>
 
 </body>
