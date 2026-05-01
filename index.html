@@ -3,200 +3,490 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudio Jurídico - Lic. Cesar Adriano</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>AP&U Estudio Jurídico - Lic. Cesar Adriano</title>
+    <!-- Incluimos FontAwesome para los iconos de contacto -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* --- ESTILOS GENERALES Y FUENTES --- */
         :root {
-            --azul-premium: #0d1b2a;
-            --dorado-metalico: #c5a059;
-            --blanco-puro: #ffffff;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            --primary-color: #ffffff; /* Blanco de fondo principal */
+            --secondary-color: #001f3f; /* Azul marino oscuro */
+            --accent-color: #c0a060; /* Color dorado/ocre para detalles */
+            --text-color-dark: #333333; /* Texto oscuro principal */
+            --text-color-light: #ffffff; /* Texto claro sobre fondo oscuro */
+            --bg-body: #f4f4f4; /* Un gris muy claro para el fondo del cuerpo si se desea, la imagen usa un degradado blanco */
+            --font-family-main: 'Times New Roman', Times, serif; /* Fuente serif elegante para títulos */
+            --font-family-body: 'Arial', sans-serif; /* Fuente sans-serif limpia para cuerpo de texto */
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            width: 100%;
+            font-family: var(--font-family-body);
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); /* Simil del fondo con textura de mármol/papel */
+            display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            overflow-x: hidden;
-            
-            /* CONFIGURACIÓN DEL MÁRMOL PERSONALIZADO */
-            background-image: 
-                linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(255,255,255,0.2) 100%), /* CAPA DE BRILLO */
-                url('marmol.jpg'); /* <--- CAMBIA AQUÍ EL NOMBRE DE TU ARCHIVO */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
         }
 
-        /* CAPA DE PROFUNDIDAD (Para que el texto resalte sobre el mármol) */
-        .overlay-brillo {
+        .page-container {
             width: 100%;
-            min-height: 100vh;
-            background: rgba(255, 255, 255, 0.1); 
-            backdrop-filter: contrast(110%) brightness(105%); /* Mejora el "acabado" visual */
+            max-width: 900px; /* Ancho máximo para el diseño */
+            background-color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden; /* Para que el borde superior no se salga */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
         }
 
-        /* CABECERA Y LOGO */
-        .cabecera {
-            padding: 30px 0;
+        /* Borde decorativo superior */
+        .top-border {
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--secondary-color), var(--accent-color), var(--secondary-color));
+        }
+
+        /* --- SECCIÓN DE CABECERA (LOGO Y NOMBRE) --- */
+        .header-section {
+            width: 100%;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo-container {
+            width: 250px; /* Ajusta el tamaño del logo */
+            margin-bottom: 20px;
+        }
+
+        .logo-placeholder {
+            width: 100%;
+            height: 150px;
+            background-color: #ddd; /* Color de marcador de posición */
+            border: 2px solid var(--accent-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #555;
+            font-size: 14px;
             text-align: center;
+            border-radius: 5px;
         }
 
-        .logo-contenedor {
-            width: 220px; /* Tamaño controlado para que no se vea "gigante" */
-            margin: 0 auto;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
-        }
-
-        .logo-contenedor img {
+        /* Si tienes la imagen del logo, usa esto en lugar del placeholder */
+        /* 
+        .logo-img {
             width: 100%;
             height: auto;
         }
+        */
 
-        /* TARJETA CENTRAL */
-        .tarjeta-identidad {
-            background: rgba(255, 255, 255, 0.95);
-            width: 100%;
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 4px solid var(--dorado-metalico);
-            border-bottom: 4px solid var(--dorado-metalico);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .nombre-abogado {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            color: var(--azul-premium);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .divisor {
-            margin: 20px auto;
-            width: 60%;
-            height: 2px;
-            background: linear-gradient(to right, transparent, var(--dorado-metalico), transparent);
-        }
-
-        .lemas {
-            font-weight: 700;
-            color: var(--azul-premium);
-            letter-spacing: 3px;
-            line-height: 1.5;
+        .subtitle {
+            font-family: var(--font-family-main);
+            color: #888;
             font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
         }
 
-        /* SERVICIOS */
-        .seccion-servicios {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px 100px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-        }
-
-        .caja-servicio {
-            background: var(--blanco-puro);
-            padding: 30px;
-            border-radius: 8px;
+        .name-banner {
+            background-color: #fcfcfc;
+            border: 1px solid #e0e0e0;
+            padding: 20px 40px;
+            border-radius: 5px;
             text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            transition: 0.3s;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
         }
 
-        .caja-servicio:hover { transform: translateY(-5px); }
-        .caja-servicio i { font-size: 2.5rem; color: var(--dorado-metalico); margin-bottom: 15px; }
+        .name-banner h1 {
+            font-family: var(--font-family-main);
+            font-size: 2.2rem;
+            color: var(--secondary-color);
+            margin: 0;
+            font-weight: normal;
+        }
 
-        /* BARRA DE CONTACTO INFERIOR */
-        .contacto-footer {
-            position: fixed;
-            bottom: 0;
+        .name-banner .separator {
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+            margin: 10px auto;
+        }
+
+        .name-banner p {
+            font-family: var(--font-family-body);
+            font-size: 1.1rem;
+            color: var(--text-color-dark);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* --- SECCIÓN ¿CÓMO PODEMOS AYUDARTE? --- */
+        .help-section {
             width: 100%;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .help-section h2 {
+            font-family: var(--font-family-main);
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .help-section p {
+            max-width: 600px;
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* --- GRILLA DE SERVICIOS --- */
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            background: var(--azul-premium);
+            gap: 20px;
+            width: 90%;
+            max-width: 800px;
+            margin-bottom: 40px;
         }
 
-        .item-contacto {
-            padding: 20px 10px;
-            color: white;
-            text-decoration: none;
+        .service-card {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
             text-align: center;
-            font-size: 0.8rem;
-            font-weight: 700;
-            border-right: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        .item-contacto i { display: block; font-size: 1.8rem; margin-bottom: 5px; }
+        .service-icon-container {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
 
-        @media (max-width: 700px) {
-            .contacto-footer { grid-template-columns: repeat(2, 1fr); position: relative; }
+        /* Marcador de posición para iconos de servicio */
+        .service-icon-placeholder {
+            width: 100%;
+            height: 100%;
+            background-color: #ccc;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #555;
+            font-size: 10px;
+            text-align: center;
+        }
+
+        /* Si tienes las imágenes de los iconos, usa esto en lugar del placeholder */
+        /* 
+        .service-icon-img {
+            width: 100%;
+            height: auto;
+        }
+        */
+
+        .service-card h3 {
+            font-family: var(--font-family-main);
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* --- BLOQUE DE CONTACTO --- */
+        .contact-block {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px 20px 40px;
+        }
+
+        .contact-card {
+            background-color: var(--secondary-color);
+            color: var(--text-color-light);
+            width: 180px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .contact-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Colores específicos para iconos si se desea imitar los círculos de color */
+        .contact-card.whatsapp .contact-icon { color: #25D366; }
+        .contact-card.call .contact-icon { color: #e0ac69; } /* Un ocre/dorado */
+        .contact-card.location .contact-icon { color: #e74c3c; } /* Rojo */
+        .contact-card.save .contact-icon { color: #aaa; } /* Gris */
+
+        .contact-card span.label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .contact-card span.value {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        /* --- BLOQUE DE BENEFICIOS --- */
+        .benefits-block {
+            width: 100%;
+            background-color: #222; /* Un gris muy oscuro casi negro */
+            padding: 15px 0;
+            color: var(--text-color-light);
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .benefits-content {
+            display: flex;
+            width: 80%;
+            max-width: 800px;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .benefit-icon {
+            font-size: 1.3rem;
+            color: #888;
+        }
+
+        /* --- PIE DE PÁGINA --- */
+        .footer-section {
+            width: 100%;
+            background-color: #000; /* Negro total */
+            color: var(--text-color-light);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .footer-logo-placeholder {
+            width: 25px;
+            height: 25px;
+            border: 1px solid var(--accent-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #555;
+            font-size: 8px;
+        }
+
+        .footer-section .firm-name {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .footer-section .slogan {
+            font-style: italic;
+            color: #aaa;
+        }
+
+        /* --- DISEÑO RESPONSIVO (PARA MÓVILES) --- */
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-block {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .name-banner h1 {
+                font-size: 1.8rem;
+            }
+            .contact-card {
+                width: calc(50% - 15px);
+            }
+            .benefits-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="overlay-brillo">
-    <header class="cabecera">
-        <div class="logo-contenedor">
-            <img src="logo.png" alt="Logo">
-        </div>
-    </header>
+    <div class="page-container">
+        <div class="top-border"></div>
 
-    <main class="tarjeta-identidad">
-        <h1 class="nombre-abogado">LIC. CESAR ADRIANO</h1>
-        <div class="divisor"></div>
-        <p class="lemas">JUICIOS CIVILES, MERCANTILES Y FAMILIARES<br>AMPARO</p>
-    </main>
+        <!-- --- SECCIÓN DE CABECERA --- -->
+        <header class="header-section">
+            <div class="logo-container">
+                <!-- Reemplazar src por la URL de tu logo real -->
+                <div class="logo-placeholder">REEMPLAZAR CON<br>LOGO "AP&U"</div>
+                <!-- <img src="ruta/a/tu/logo-ap-u.png" alt="Logo AP&U Estudio Jurídico" class="logo-img"> -->
+            </div>
+            <p class="subtitle">ESTUDIO JURÍDICO</p>
+            
+            <div class="name-banner">
+                <h1>LIC. CESAR ADRIANO</h1>
+                <div class="separator"></div>
+                <p>JUICIOS CIVILES, MERCANTILES Y FAMILIARES<br>AMPARO</p>
+            </div>
+        </header>
 
-    <section class="seccion-servicios">
-        <div class="caja-servicio">
-            <i class="fa-solid fa-balance-scale"></i>
-            <h3>CIVIL</h3>
-        </div>
-        <div class="caja-servicio">
-            <i class="fa-solid fa-briefcase"></i>
-            <h3>MERCANTIL</h3>
-        </div>
-        <div class="caja-servicio">
-            <i class="fa-solid fa-users-rays"></i>
-            <h3>FAMILIAR</h3>
-        </div>
-        <div class="caja-servicio">
-            <i class="fa-solid fa-gavel"></i>
-            <h3>AMPARO</h3>
-        </div>
-    </section>
+        <!-- --- SECCIÓN ¿CÓMO PODEMOS AYUDARTE? --- -->
+        <section class="help-section">
+            <h2>¿CÓMO PODEMOS AYUDARTE?</h2>
+            <p>Brindamos asesoría y representación legal con profesionalismo, ética y compromiso, buscando siempre la mejor solución para cada caso.</p>
+        </section>
 
-    <nav class="contacto-footer">
-        <a href="https://wa.me/526251101156" class="item-contacto">
-            <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i> WHATSAPP
-        </a>
-        <a href="tel:6251101156" class="item-contacto">
-            <i class="fa-solid fa-phone" style="color: #c5a059;"></i> LLAMAR
-        </a>
-        <a href="#" class="item-contacto">
-            <i class="fa-solid fa-location-dot" style="color: #ff5a5f;"></i> UBICACIÓN
-        </a>
-        <a href="#" class="item-contacto">
-            <i class="fa-solid fa-address-book"></i> GUARDAR
-        </a>
-    </nav>
-</div>
+        <!-- --- GRILLA DE SERVICIOS --- -->
+        <section class="services-grid">
+            <!-- Servicio 1 -->
+            <div class="service-card">
+                <div class="service-icon-container">
+                    <!-- Reemplazar src por la URL de tu icono real -->
+                    <div class="service-icon-placeholder">ICONO<br>MANOS</div>
+                    <!-- <img src="ruta/a/tu/icono-manos.png" alt="Juicios Civiles" class="service-icon-img"> -->
+                </div>
+                <h3>JUICIOS CIVILES</h3>
+                <p>Atendemos conflictos entre particulares relacionados con contratos, pago de deudas, arrendamientos, daños y perjuicios, entre otros.</p>
+            </div>
+
+            <!-- Servicio 2 -->
+            <div class="service-card">
+                <div class="service-icon-container">
+                    <!-- Reemplazar src por la URL de tu icono real -->
+                    <div class="service-icon-placeholder">ICONO<br>GRÁFICA</div>
+                    <!-- <img src="ruta/a/tu/icono-grafica.png" alt="Juicios Mercantiles" class="service-icon-img"> -->
+                </div>
+                <h3>JUICIOS MERCANTILES</h3>
+                <p>Soluciones legales para empresas y negocios en materia de contratos mercantiles, pagarés, cobranza, sociedades, quiebras y más.</p>
+            </div>
+
+            <!-- Servicio 3 -->
+            <div class="service-card">
+                <div class="service-icon-container">
+                    <!-- Reemplazar src por la URL de tu icono real -->
+                    <div class="service-icon-placeholder">ICONO<br>FAMILIA</div>
+                    <!-- <img src="ruta/a/tu/icono-familia.png" alt="Juicios Familiares" class="service-icon-img"> -->
+                </div>
+                <h3>JUICIOS FAMILIARES</h3>
+                <p>Asesoría y representación en asuntos de divorcios, pensiones alimenticias, custodia, convivencia, sucesiones y régimen patrimonial.</p>
+            </div>
+
+            <!-- Servicio 4 -->
+            <div class="service-card">
+                <div class="service-icon-container">
+                    <!-- Reemplazar src por la URL de tu icono real -->
+                    <div class="service-icon-placeholder">ICONO<br>AMPARO</div>
+                    <!-- <img src="ruta/a/tu/icono-amparo.png" alt="Amparo" class="service-icon-img"> -->
+                </div>
+                <h3>AMPARO</h3>
+                <p>Protegemos tus derechos mediante el juicio de amparo contra actos de autoridad que vulneren las garantías individuales.</p>
+            </div>
+        </section>
+
+        <!-- --- BLOQUE DE CONTACTO --- -->
+        <section class="contact-block">
+            <!-- Reemplazar los enlaces href con los valores reales -->
+            <a href="https://wa.me/5216251101156" class="contact-card whatsapp" target="_blank">
+                <i class="fab fa-whatsapp contact-icon"></i>
+                <span class="label">WHATSAPP</span>
+                <span class="value">625 110 1156</span>
+            </a>
+            <a href="tel:6251101156" class="contact-card call">
+                <i class="fas fa-phone contact-icon"></i>
+                <span class="label">LLAMAR</span>
+                <span class="value">625 110 1156</span>
+            </a>
+            <a href="#" class="contact-card location">
+                <i class="fas fa-map-marker-alt contact-icon"></i>
+                <span class="label">UBICACIÓN</span>
+                <span class="value">Ver en Maps</span>
+            </a>
+            <a href="#" class="contact-card save">
+                <i class="far fa-address-card contact-icon"></i>
+                <span class="label">GUARDAR CONTACTO</span>
+                <span class="value">Agregar a contactos</span>
+            </a>
+        </section>
+
+        <!-- --- BLOQUE DE BENEFICIOS --- -->
+        <div class="benefits-block">
+            <div class="benefits-content">
+                <div class="benefit-item">
+                    <i class="far fa-envelope benefit-icon"></i>
+                    <span>Atención profesional y confidencial</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="far fa-check-circle benefit-icon"></i>
+                    <span>Compromiso y resultados efectivos</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="far fa-user benefit-icon"></i>
+                    <span>Asesoría personalizada en cada caso</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- --- PIE DE PÁGINA --- -->
+        <footer class="footer-section">
+            <div class="footer-logo-placeholder">ICONO</div>
+            <span class="firm-name">AP&U ESTUDIO JURÍDICO</span>
+            <span class="slogan">Defendemos tus derechos, protegemos tu futuro.</span>
+        </footer>
+
+    </div>
 
 </body>
 </html>
