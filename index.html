@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AP&U Estudio Jurídico - Lic. Cesar Adriano</title>
-    <!-- Incluimos FontAwesome para los iconos de contacto -->
+    <!-- Incluimos FontAwesome para los iconos de contacto y beneficios -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* --- ESTILOS GENERALES Y FUENTES --- */
@@ -14,7 +14,7 @@
             --accent-color: #c0a060; /* Color dorado/ocre para detalles */
             --text-color-dark: #333333; /* Texto oscuro principal */
             --text-color-light: #ffffff; /* Texto claro sobre fondo oscuro */
-            --bg-body: #f4f4f4; /* Un gris muy claro para el fondo del cuerpo si se desea, la imagen usa un degradado blanco */
+            --bg-card: #f9f9f9; /* Gris muy claro para las tarjetas de servicio */
             --font-family-main: 'Times New Roman', Times, serif; /* Fuente serif elegante para títulos */
             --font-family-body: 'Arial', sans-serif; /* Fuente sans-serif limpia para cuerpo de texto */
         }
@@ -23,7 +23,8 @@
             font-family: var(--font-family-body);
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); /* Simil del fondo con textura de mármol/papel */
+            /* Fondo simulando textura de mármol/papel de la imagen */
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -34,26 +35,27 @@
             width: 100%;
             max-width: 900px; /* Ancho máximo para el diseño */
             background-color: var(--primary-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 15px;
             overflow: hidden; /* Para que el borde superior no se salga */
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
+            margin: 20px; /* Margen externo para móviles */
         }
 
         /* Borde decorativo superior */
         .top-border {
             width: 100%;
-            height: 5px;
+            height: 8px;
             background: linear-gradient(to right, var(--secondary-color), var(--accent-color), var(--secondary-color));
         }
 
         /* --- SECCIÓN DE CABECERA (LOGO Y NOMBRE) --- */
         .header-section {
             width: 100%;
-            padding: 40px 20px;
+            padding: 50px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -61,25 +63,26 @@
         }
 
         .logo-container {
-            width: 250px; /* Ajusta el tamaño del logo */
-            margin-bottom: 20px;
+            width: 280px; /* Ajusta el tamaño del logo */
+            margin-bottom: 25px;
         }
 
+        /* Marcador de posición para el logo principal AP&U */
         .logo-placeholder {
             width: 100%;
-            height: 150px;
-            background-color: #ddd; /* Color de marcador de posición */
-            border: 2px solid var(--accent-color);
+            height: 160px;
+            background-color: #eee;
+            border: 2px dashed #bbb;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #555;
+            color: #777;
             font-size: 14px;
             text-align: center;
-            border-radius: 5px;
+            border-radius: 8px;
         }
 
-        /* Si tienes la imagen del logo, usa esto en lugar del placeholder */
+        /* Descomenta esto y añade la ruta cuando tengas el logo real */
         /* 
         .logo-img {
             width: 100%;
@@ -89,48 +92,51 @@
 
         .subtitle {
             font-family: var(--font-family-main);
-            color: #888;
+            color: #999;
             font-size: 1.1rem;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
         }
 
         .name-banner {
             background-color: #fcfcfc;
-            border: 1px solid #e0e0e0;
-            padding: 20px 40px;
-            border-radius: 5px;
+            border: 1px solid #e8e8e8;
+            padding: 25px 50px;
+            border-radius: 8px;
             text-align: center;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+            position: relative;
         }
 
         .name-banner h1 {
             font-family: var(--font-family-main);
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--secondary-color);
             margin: 0;
             font-weight: normal;
         }
 
         .name-banner .separator {
-            width: 50px;
+            width: 60px;
             height: 2px;
             background-color: var(--accent-color);
-            margin: 10px auto;
+            margin: 15px auto;
         }
 
         .name-banner p {
             font-family: var(--font-family-body);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--text-color-dark);
             margin: 0;
-            line-height: 1.4;
+            line-height: 1.5;
+            font-weight: 300;
         }
 
         /* --- SECCIÓN ¿CÓMO PODEMOS AYUDARTE? --- */
         .help-section {
             width: 100%;
-            padding: 40px 20px;
+            padding: 50px 20px 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -140,224 +146,248 @@
         .help-section h2 {
             font-family: var(--font-family-main);
             color: var(--accent-color);
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            font-size: 2rem;
+            margin-bottom: 20px;
             text-transform: uppercase;
+            font-weight: normal;
         }
 
         .help-section p {
-            max-width: 600px;
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.6;
+            max-width: 650px;
+            font-size: 1.15rem;
+            color: #666;
+            line-height: 1.7;
+            margin: 0;
         }
 
-        /* --- GRILLA DE SERVICIOS --- */
+        /* --- GRILLA DE SERVICIOS (Con Iconos SVG) --- */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
             width: 90%;
-            max-width: 800px;
-            margin-bottom: 40px;
+            max-width: 820px;
+            margin-bottom: 50px;
+            padding: 0 10px;
         }
 
         .service-card {
-            background-color: #f9f9f9;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 20px;
+            background-color: var(--bg-card);
+            border: 1px solid #e8e8e8;
+            border-radius: 10px;
+            padding: 30px 20px;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
         }
 
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Contenedor circular para los iconos SVG */
         .service-icon-container {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 15px;
-        }
-
-        /* Marcador de posición para iconos de servicio */
-        .service-icon-placeholder {
-            width: 100%;
-            height: 100%;
-            background-color: #ccc;
-            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            margin-bottom: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #555;
-            font-size: 10px;
-            text-align: center;
         }
 
-        /* Si tienes las imágenes de los iconos, usa esto en lugar del placeholder */
-        /* 
-        .service-icon-img {
+        /* Estilos para los SVG incrustados */
+        .service-icon-svg {
             width: 100%;
-            height: auto;
+            height: 100%;
+            fill: none;
+            stroke: #222; /* Color de línea oscuro similar a la foto */
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
-        */
 
         .service-card h3 {
             font-family: var(--font-family-main);
             color: var(--secondary-color);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             text-transform: uppercase;
+            font-weight: normal;
         }
 
         .service-card p {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.5;
+            font-size: 0.95rem;
+            color: #777;
+            line-height: 1.6;
             margin: 0;
         }
 
-        /* --- BLOQUE DE CONTACTO --- */
+        /* --- BLOQUE DE CONTACTO (Con Botones de Color) --- */
         .contact-block {
             width: 100%;
             display: flex;
             justify-content: center;
             gap: 15px;
-            padding: 20px 20px 40px;
+            padding: 0 20px 50px;
+            flex-wrap: wrap; /* Para móviles */
         }
 
         .contact-card {
             background-color: var(--secondary-color);
             color: var(--text-color-light);
-            width: 180px;
-            padding: 15px;
-            border-radius: 8px;
+            width: 190px;
+            padding: 20px 15px;
+            border-radius: 10px;
             text-align: center;
             text-decoration: none;
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .contact-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.25);
         }
 
-        .contact-icon {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
+        /* Contenedor circular para el icono dentro del botón azul */
+        .contact-icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 1.8rem;
         }
 
-        /* Colores específicos para iconos si se desea imitar los círculos de color */
-        .contact-card.whatsapp .contact-icon { color: #25D366; }
-        .contact-card.call .contact-icon { color: #e0ac69; } /* Un ocre/dorado */
-        .contact-card.location .contact-icon { color: #e74c3c; } /* Rojo */
-        .contact-card.save .contact-icon { color: #aaa; } /* Gris */
+        /* Colores específicos para los círculos de icono de contacto */
+        .contact-card.whatsapp .contact-icon-circle { background-color: #25D366; color: white; }
+        .contact-card.call .contact-icon-circle { background-color: #e0ac69; color: white; } /* Ocre */
+        .contact-card.location .contact-icon-circle { background-color: #e74c3c; color: white; } /* Rojo */
+        .contact-card.save .contact-icon-circle { background-color: #555; color: white; } /* Gris */
 
         .contact-card span.label {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 5px;
+            opacity: 0.8;
         }
 
         .contact-card span.value {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: bold;
         }
 
-        /* --- BLOQUE DE BENEFICIOS --- */
+        /* --- BLOQUE DE BENEFICIOS (Gris Oscuro) --- */
         .benefits-block {
             width: 100%;
-            background-color: #222; /* Un gris muy oscuro casi negro */
-            padding: 15px 0;
-            color: var(--text-color-light);
-            font-size: 0.9rem;
+            background-color: #2a2a2a; /* Gris muy oscuro */
+            padding: 20px 0;
+            color: #ccc;
+            font-size: 0.95rem;
             display: flex;
             justify-content: center;
+            border-top: 1px solid #444;
         }
 
         .benefits-content {
             display: flex;
-            width: 80%;
+            width: 85%;
             max-width: 800px;
             justify-content: space-around;
             align-items: center;
+            gap: 20px;
         }
 
         .benefit-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .benefit-icon {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: #888;
         }
 
-        /* --- PIE DE PÁGINA --- */
+        /* --- PIE DE PÁGINA (Negro) --- */
         .footer-section {
             width: 100%;
             background-color: #000; /* Negro total */
-            color: var(--text-color-light);
-            padding: 10px 20px;
+            color: #888;
+            padding: 15px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             font-size: 0.9rem;
+            border-top: 1px solid #333;
         }
 
-        .footer-logo-placeholder {
+        /* Icono SVG de balanza pequeño para el footer */
+        .footer-balance-icon {
             width: 25px;
             height: 25px;
-            border: 1px solid var(--accent-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #555;
-            font-size: 8px;
+            fill: none;
+            stroke: var(--accent-color);
+            stroke-width: 1.5;
         }
 
         .footer-section .firm-name {
             font-weight: bold;
             text-transform: uppercase;
+            color: #bbb;
         }
 
         .footer-section .slogan {
             font-style: italic;
-            color: #aaa;
+            color: #777;
         }
 
         /* --- DISEÑO RESPONSIVO (PARA MÓVILES) --- */
-        @media (max-width: 768px) {
+        @media (max-width: 850px) {
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            .contact-block {
-                flex-wrap: wrap;
+                width: 95%;
             }
         }
 
-        @media (max-width: 480px) {
-            .services-grid {
-                grid-template-columns: 1fr;
+        @media (max-width: 600px) {
+            .name-banner {
+                padding: 20px;
             }
             .name-banner h1 {
-                font-size: 1.8rem;
+                font-size: 1.9rem;
+            }
+            .contact-block {
+                gap: 10px;
             }
             .contact-card {
-                width: calc(50% - 15px);
+                width: calc(50% - 10px);
+                padding: 15px 10px;
+            }
+            .contact-card span.value {
+                font-size: 1rem;
             }
             .benefits-content {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 10px;
+                gap: 12px;
+                width: 90%;
+            }
+            .footer-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 5px;
             }
         }
     </style>
@@ -370,8 +400,8 @@
         <!-- --- SECCIÓN DE CABECERA --- -->
         <header class="header-section">
             <div class="logo-container">
-                <!-- Reemplazar src por la URL de tu logo real -->
-                <div class="logo-placeholder">REEMPLAZAR CON<br>LOGO "AP&U"</div>
+                <!-- Reemplazar con la imagen real del logo AP&U -->
+                <div class="logo-placeholder">REEMPLAZAR CON<br>IMAGEN DE LOGO "AP&U"</div>
                 <!-- <img src="ruta/a/tu/logo-ap-u.png" alt="Logo AP&U Estudio Jurídico" class="logo-img"> -->
             </div>
             <p class="subtitle">ESTUDIO JURÍDICO</p>
@@ -389,47 +419,61 @@
             <p>Brindamos asesoría y representación legal con profesionalismo, ética y compromiso, buscando siempre la mejor solución para cada caso.</p>
         </section>
 
-        <!-- --- GRILLA DE SERVICIOS --- -->
+        <!-- --- GRILLA DE SERVICIOS (Con Iconos SVG Genéricos) --- -->
         <section class="services-grid">
-            <!-- Servicio 1 -->
+            <!-- Servicio 1: CIVILES (Manos chocando) -->
             <div class="service-card">
                 <div class="service-icon-container">
-                    <!-- Reemplazar src por la URL de tu icono real -->
-                    <div class="service-icon-placeholder">ICONO<br>MANOS</div>
-                    <!-- <img src="ruta/a/tu/icono-manos.png" alt="Juicios Civiles" class="service-icon-img"> -->
+                    <svg class="service-icon-svg" viewBox="0 0 24 24">
+                        <path d="M10 13l-3.5 3.5m0 0a2.5 2.5 0 01-3.5-3.5l3.5-3.5"></path>
+                        <path d="M14 11l3.5-3.5m0 0a2.5 2.5 0 013.5 3.5l-3.5 3.5"></path>
+                        <path d="M16.5 14.5l-4 4-2.5-2.5 1-1"></path>
+                        <path d="M7.5 9.5l4-4 2.5 2.5-1 1"></path>
+                    </svg>
                 </div>
                 <h3>JUICIOS CIVILES</h3>
                 <p>Atendemos conflictos entre particulares relacionados con contratos, pago de deudas, arrendamientos, daños y perjuicios, entre otros.</p>
             </div>
 
-            <!-- Servicio 2 -->
+            <!-- Servicio 2: MERCANTILES (Gráfica ascendente) -->
             <div class="service-card">
                 <div class="service-icon-container">
-                    <!-- Reemplazar src por la URL de tu icono real -->
-                    <div class="service-icon-placeholder">ICONO<br>GRÁFICA</div>
-                    <!-- <img src="ruta/a/tu/icono-grafica.png" alt="Juicios Mercantiles" class="service-icon-img"> -->
+                    <svg class="service-icon-svg" viewBox="0 0 24 24">
+                        <path d="M3 3v18h18"></path>
+                        <path d="M18.5 7.5L13 13l-3-3L7 13"></path>
+                        <path d="M15 7.5h3.5V11"></path>
+                    </svg>
                 </div>
                 <h3>JUICIOS MERCANTILES</h3>
                 <p>Soluciones legales para empresas y negocios en materia de contratos mercantiles, pagarés, cobranza, sociedades, quiebras y más.</p>
             </div>
 
-            <!-- Servicio 3 -->
+            <!-- Servicio 3: FAMILIARES (Figuras humanas) -->
             <div class="service-card">
                 <div class="service-icon-container">
-                    <!-- Reemplazar src por la URL de tu icono real -->
-                    <div class="service-icon-placeholder">ICONO<br>FAMILIA</div>
-                    <!-- <img src="ruta/a/tu/icono-familia.png" alt="Juicios Familiares" class="service-icon-img"> -->
+                    <svg class="service-icon-svg" viewBox="0 0 24 24">
+                        <circle cx="12" cy="7" r="3"></circle>
+                        <path d="M12 10c-3.3 0-6 2.7-6 6v2h12v-2c0-3.3-2.7-6-6-6z"></path>
+                        <circle cx="18" cy="11" r="2"></circle>
+                        <path d="M18 13c-2.2 0-4 1.8-4 4v1h8v-1c0-2.2-1.8-4-4-4z"></path>
+                        <circle cx="6" cy="11" r="2"></circle>
+                        <path d="M6 13c2.2 0 4 1.8 4 4v1H2v-1c0-2.2 1.8-4 4-4z"></path>
+                    </svg>
                 </div>
                 <h3>JUICIOS FAMILIARES</h3>
                 <p>Asesoría y representación en asuntos de divorcios, pensiones alimenticias, custodia, convivencia, sucesiones y régimen patrimonial.</p>
             </div>
 
-            <!-- Servicio 4 -->
+            <!-- Servicio 4: AMPARO (Columna/Edificio) -->
             <div class="service-card">
                 <div class="service-icon-container">
-                    <!-- Reemplazar src por la URL de tu icono real -->
-                    <div class="service-icon-placeholder">ICONO<br>AMPARO</div>
-                    <!-- <img src="ruta/a/tu/icono-amparo.png" alt="Amparo" class="service-icon-img"> -->
+                    <svg class="service-icon-svg" viewBox="0 0 24 24">
+                        <path d="M3 21h18"></path>
+                        <path d="M5 21V7l7-4 7 4v14"></path>
+                        <path d="M9 10v6"></path>
+                        <path d="M12 10v6"></path>
+                        <path d="M15 10v6"></path>
+                    </svg>
                 </div>
                 <h3>AMPARO</h3>
                 <p>Protegemos tus derechos mediante el juicio de amparo contra actos de autoridad que vulneren las garantías individuales.</p>
@@ -438,24 +482,38 @@
 
         <!-- --- BLOQUE DE CONTACTO --- -->
         <section class="contact-block">
-            <!-- Reemplazar los enlaces href con los valores reales -->
+            <!-- Botón WhatsApp -->
             <a href="https://wa.me/5216251101156" class="contact-card whatsapp" target="_blank">
-                <i class="fab fa-whatsapp contact-icon"></i>
+                <div class="contact-icon-circle">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
                 <span class="label">WHATSAPP</span>
                 <span class="value">625 110 1156</span>
             </a>
+            
+            <!-- Botón Llamar -->
             <a href="tel:6251101156" class="contact-card call">
-                <i class="fas fa-phone contact-icon"></i>
+                <div class="contact-icon-circle">
+                    <i class="fas fa-phone"></i>
+                </div>
                 <span class="label">LLAMAR</span>
                 <span class="value">625 110 1156</span>
             </a>
+            
+            <!-- Botón Ubicación -->
             <a href="#" class="contact-card location">
-                <i class="fas fa-map-marker-alt contact-icon"></i>
+                <div class="contact-icon-circle">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
                 <span class="label">UBICACIÓN</span>
                 <span class="value">Ver en Maps</span>
             </a>
+            
+            <!-- Botón Guardar Contacto -->
             <a href="#" class="contact-card save">
-                <i class="far fa-address-card contact-icon"></i>
+                <div class="contact-icon-circle">
+                    <i class="far fa-address-card"></i>
+                </div>
                 <span class="label">GUARDAR CONTACTO</span>
                 <span class="value">Agregar a contactos</span>
             </a>
@@ -481,7 +539,12 @@
 
         <!-- --- PIE DE PÁGINA --- -->
         <footer class="footer-section">
-            <div class="footer-logo-placeholder">ICONO</div>
+            <!-- Icono de balanza genérico para el footer -->
+            <svg class="footer-balance-icon" viewBox="0 0 24 24">
+                <path d="M12 3v18"></path>
+                <path d="M6 10a6 6 0 0112 0v1a6 6 0 01-12 0v-1z"></path>
+                <path d="M6 11h12"></path>
+            </svg>
             <span class="firm-name">AP&U ESTUDIO JURÍDICO</span>
             <span class="slogan">Defendemos tus derechos, protegemos tu futuro.</span>
         </footer>
